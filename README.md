@@ -380,3 +380,33 @@ echo "Dizideki eleman sayısı: " . $count;
 ?>
 ```
 Bu örnekte, "count()" fonksiyonu, $numbers dizisindeki öğe sayısını döndürür. Sonuç olarak, ekranda "The number of elements in the array is: 5" mesajı görüntülenecektir.
+### sort()
+
+Diziyi sıralar. Örneğin:
+```php
+<?php
+$numbers = array(5, 4, 3, 2, 1);
+sort($numbers);
+echo "Sıralanmış dizi: ";
+foreach ($numbers as $num) {
+    echo $num . " ";
+}
+?>
+```
+Bu örnekte, "sort()" fonksiyonu, $numbers dizisindeki öğeleri sıralar. Dizideki öğeler artan sıraya göre sıralanır. Sonuç olarak, ekranda "The sorted array is: 1 2 3 4 5" mesajı görüntülenecektir.
+
+### array_push()
+
+Diziye bir veya daha fazla öğe ekler. Örneğin:
+```php
+<?php
+$fruits = array("elma", "portakal");
+array_push($fruits, "muz", "armut");
+echo "Güncellenmiş dizi: ";
+foreach ($fruits as $fruit) {
+    echo $fruit . " ";
+}
+?>
+```
+Bu örnekte, "array_push()" fonksiyonu, $fruits dizisine "banana" ve "pear" öğelerini ekler. Sonuç olarak, ekranda "The updated array is: apple orange banana pear" mesajı görüntülenecektir.
+
