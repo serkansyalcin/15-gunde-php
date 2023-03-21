@@ -412,3 +412,101 @@ Bu örnekte, "array_push()" fonksiyonu, $fruits dizisine "banana" ve "pear" öğ
 
 ## Özet  
 Bugünkü makalede, PHP  dizileri  hakkında  temel  bilgileri öğrendik. Diziler, birden çok  değeri  saklamak  ve  işlemek  için  kullanışlı bir  veri  yapısıdır. Dizilerin  tanımlanması, elemanlarına  erişimi, elemanlarını değiştirme, döngülerle  işleme  ve  fonksiyonlarla  işleme  konularını ele  aldık. İlerideki  makalelerde, dizilerin  daha  gelişmiş konularını ele  alacağız.
+
+# Gün 7: PHP Fonksiyonları
+
+Bugünkü makalede, PHP fonksiyonlarını ele alacağız. Fonksiyonlar, programlamada tekrarlanan işlemleri kolaylaştıran ve kodun daha düzenli olmasını sağlayan bir yapıdır. Fonksiyonlar, belirli bir görevi yerine getiren ve belirli bir değer döndüren birimlerdir. PHP'de, birçok hazır fonksiyon bulunurken, aynı zamanda kendi fonksiyonlarımızı da oluşturabiliriz.
+
+## Fonksiyonların Tanımlanması
+
+Bir fonksiyonu tanımlamak için `function` anahtar kelimesi kullanılır. Bir fonksiyonun adı, fonksiyonu çağırmak için kullanılan isimdir. Fonksiyon adı, değişken isimleriyle aynı kurallara tabidir. Adlar, harf veya alt çizgi (_) ile başlayabilir ve ardından harf, rakam veya alt çizgi (_) kullanılabilir.
+
+Bir fonksiyonun içindeki işlemler, fonksiyonun adından sonra gelen parantez içinde belirtilir. Eğer fonksiyon herhangi bir değer döndürmüyorsa, parantez içinde herhangi bir değer belirtilmez.
+
+Bir örnek fonksiyon tanımı şu şekildedir:
+```php
+function merhaba() {
+    echo "Merhaba dünya!";
+}
+```
+Bu fonksiyon, "Merhaba dünya!" metnini ekrana yazdıracaktır.
+
+## Fonksiyonların Çağrılması
+
+Bir fonksiyonu çağırmak için, fonksiyonun adı ve parantez kullanılır. Eğer fonksiyon herhangi bir değer döndürüyorsa, bu değer bir değişkene atanabilir veya doğrudan kullanılabilir.
+
+Örnek olarak, yukarıda tanımladığımız `merhaba()` fonksiyonunu çağırmak için şu şekilde kullanabiliriz:
+```php
+merhaba(); // "Merhaba dünya!" metni ekrana yazdırılacak
+```
+## Parametreli Fonksiyonlar
+
+Fonksiyonlar, parametrelerle birlikte de kullanılabilirler. Parametreler, fonksiyon içinde kullanılacak değerleri belirtir. Parametreler, fonksiyon adından sonra gelen parantez içinde belirtilir ve virgülle ayrılır.
+
+Aşağıdaki örnekte, `merhaba()` fonksiyonu parametre olarak bir isim alacak şekilde tanımlanmıştır:
+```php
+function merhaba_isim($isim) {
+    echo "Merhaba " . $isim . "!";
+}
+```
+Bu fonksiyon, `isim` parametresine bağlı olarak, farklı isimlere hitap edebilir.
+
+Fonksiyonu çağırmak için, `merhaba_isim()` fonksiyonu kullanarak, parametre olarak bir isim vermemiz gerekir:
+```php
+merhaba_isim("Serkan"); // "Merhaba Serkan!" metni ekrana yazdırılacak
+```
+## Fonksiyonlardan Değer Döndürme
+
+Bir fonksiyon, bir değer döndürebilir. Değer, `return` anahtar kelimesi kullanılarak belirtilir. Fonksiyonun sonunda, `return` anahtar kelimesi kullanılarak döndürülecek değer belirtilir.
+
+Aşağıdaki örnekte, `topla()` fonksiyonu iki sayının toplamını döndürecek şekilde tanımlanmıştır:
+```php
+function topla($sayi1, $sayi2) {
+    return $sayi1 + $sayi2;
+}
+```
+Bu fonksiyon, iki sayının toplamını döndürecektir. Fonksiyonu çağırmak için, `echo` veya `print` gibi bir fonksiyon kullanabiliriz:
+```php
+echo topla(3, 4); // 7
+```
+## Fonksiyonların Varsayılan Değerleri
+
+Bir fonksiyonun parametreleri, varsayılan değerlerle belirtilebilir. Bu sayede, fonksiyon çağrılırken bu parametrelere değer verilmediği zaman, fonksiyon bu varsayılan değerleri kullanacaktır.
+
+Aşağıdaki örnekte, `merhaba_isim()` fonksiyonu, isim parametresinin varsayılan değerini "dünya" olarak belirtilmiştir:
+```php
+function merhaba_isim($isim = "dünya") {
+    echo "Merhaba " . $isim . "!";
+}
+```
+Eğer bu fonksiyon çağrılırken bir isim belirtilmezse, fonksiyon varsayılan değer olan "dünya"yı kullanacaktır
+```php
+merhaba_isim(); // "Merhaba dünya!" metni ekrana yazdırılacak
+```
+Eğer bir isim belirtilirse, fonksiyon bu ismi kullanacaktır:
+```php
+merhaba_isim("Serkan"); // "Merhaba Serkan!" metni ekrana yazdırılacak
+```
+## Fonksiyonların Kapsamı
+
+Bir fonksiyonun değişkenleri, fonksiyonun kapsamı içinde tanımlanır. Bu değişkenler, fonksiyonun dışında kullanılamazlar. Eğer bir değişken, fonksiyonun içinde tanımlanmamışsa, bu değişken fonksiyonun dışında kullanılabilir.
+
+Aşağıdaki örnekte, `topla()` fonksiyonu, iki sayının toplamını hesaplar ve sonucu geri döndürür. Bu fonksiyonda, `$sonuc` değişkeni, sadece fonksiyonun içinde tanımlanmıştır ve fonksiyon dışında kullanılmaz.
+```php
+function topla($sayi1, $sayi2) {
+    $sonuc = $sayi1 + $sayi2;
+    return $sonuc;
+}
+```
+Eğer `$sonuc` değişkeni fonksiyonun dışında kullanılmak istenirse, fonksiyonun sonunda `return` anahtar kelimesi kullanılarak döndürülmelidir:
+```php
+function topla($sayi1, $sayi2) {
+    $sonuc = $sayi1 + $sayi2;
+    return $sonuc;
+}
+
+$sonuc = topla(3, 4);
+echo $sonuc; // 7
+
+```
+Burada, `$sonuc` değişkeni fonksiyon içinde tanımlanmış, hesaplanmış ve `return` anahtar kelimesi ile döndürülmüştür. Döndürülen bu değer, `$sonuc` değişkenine atanarak fonksiyon dışında kullanılabilir hale getirilmiştir.
