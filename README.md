@@ -240,7 +240,7 @@ echo ($x < 20) ? "x, 20'den küçüktür." : "x, 20'den büyüktür veya eşitti
 ```
 Bu örnekte, $x değişkeni 10 değerini saklar. Ternary ifadesi, $x değerinin 20'den küçük olup olmadığını kontrol eder. $x 20'den küçük olduğu için, ekranda "x, 20'den küçüktür." mesajı görüntülenecektir.
 
-# Gün 4: PHP Döngüleri
+# Gün 4: PHP Döngüler
 
 ## For Döngüsü
 
@@ -283,137 +283,8 @@ do {
 ```
 Bu örnekte, do-while döngüsü, $x değişkeninin 10'dan küçük veya eşit olup olmadığını kontrol eder. İlk yinelemede $x değeri 0 olduğu için, kod bloğu çalıştırılır ve ekranda "The number is: 0" mesajı görüntülenir. Sonraki yinelemelerde, $x değeri artırılır ve koşul doğru olduğu sürece kod bloğu tekrar çalıştırılır. Sonuç olarak, ekranda 0'dan 10'a kadar olan sayılar görüntülenecektir.
 
-# Gün 5: PHP Fonksiyonları
+# Gün 5: PHP Fonksiyonlar
 
-Fonksiyonlar, belirli bir işlevi yerine getirmek için kullanılan kod bloklarıdır. Fonksiyonlar, kodun yeniden kullanılabilirliğini artırır ve programlama işini daha modüler hale getirir. Bir fonksiyon oluşturmak için, "function" anahtar kelimesi kullanılır. Örneğin:
-```php
-<?php
-function addNumbers($a, $b) {
-    $sum = $a + $b;
-    return $sum;
-}
-echo "5 ve 10'un toplamı: " . addNumbers(5, 10);
-?>
-```
-Bu örnekte, addNumbers() fonksiyonu, $a ve $b parametrelerini alır ve bu parametreleri toplar. Daha sonra, toplam değer "return" ifadesi ile geri döndürülür. Fonksiyon çağrısı, "echo" ifadesi ile yapılır ve sonuç ekrana yazdırılır. Sonuç olarak, ekranda "The sum of 5 and 10 is: 15" mesajı görüntülenecektir.
-
-## Değişken Alan Fonksiyonlar
-
-Değişken alan fonksiyonlar, fonksiyonlara değişken sayıda parametre geçmek için kullanılır. Bu fonksiyonlar, "func_num_args()", "func_get_arg()" ve "func_get_args()" fonksiyonları kullanılarak çalışır. Örneğin:
-```php
-<?php
-function addNumbers() {
-    $sum = 0;
-    $numArgs = func_num_args();
-    for ($i = 0; $i < $numArgs; $i++) {
-        $sum += func_get_arg($i);
-    }
-    return $sum;
-}
-echo "1, 2, 3, 4 ve 5'in toplamı: " . addNumbers(1, 2, 3, 4, 5);
-?>
-```
-Bu örnekte, addNumbers() fonksiyonu değişken sayıda parametre alır. Fonksiyon içinde, "func_num_args()" fonksiyonu ile kaç adetarametre geçirildiği kontrol edilir. Daha sonra, "func_get_arg()" fonksiyonu ile her parametrenin değeri alınarak toplama işlemi yapılır. Fonksiyon çağrısı yine "echo" ifadesi ile yapılır ve sonuç ekrana yazdırılır. Sonuç olarak, ekranda "The sum of 1, 2, 3, 4 and 5 is: 15" mesajı görüntülenecektir.
-
-## Fonksiyonlarda Referans Değişkenleri
-
-Fonksiyonlar, değerleri geri döndürmenin yanı sıra, referans değişkenlerini de döndürebilirler. Referans değişkenleri, fonksiyonun işlediği değişkenin kendisini kullanarak değişiklik yapar. Örneğin:
-```php
-<?php
-function addOne(&$num) {
-    $num++;
-}
-
-$x = 5;
-addOne($x);
-echo "X'in değeri: $x";
-?>
-```
-Bu örnekte, addOne() fonksiyonu, $num değişkenini alır ve değerini bir artırır. Fonksiyon, "&" işareti ile referans parametresi alır. Fonksiyon çağrısı, $x değişkeni ile yapılır ve addOne() fonksiyonu, $x değişkeninin değerini bir artırır. Sonuç olarak, ekranda "The value of x is: 6" mesajı görüntülenecektir.
-
-# Gün 6: PHP Diziler
-
-Diziler, belirli bir türdeki verileri tutmak için kullanılan veri yapılarıdır. Diziler, tek bir değişken içinde çok sayıda değer saklamak için kullanılabilir. PHP'de, diziler iki türde olabilir: indisli diziler ve ilişkisel diziler.
-
-## İndisli Diziler
-
-İndisli diziler, her öğenin bir indis numarası ile belirtildiği dizilerdir. İndis numaraları sıfırdan başlar ve her öğenin farklı bir indis numarası vardır. İndisli diziler, "array()" fonksiyonu veya kısa sözdizimi ile oluşturulabilir. Örneğin:
-```php
-<?php
-$numbers = array(1, 2, 3, 4, 5);
-echo "The third element of the array is: " . $numbers[2];
-?>
-```
-Bu örnekte, $numbers dizisi "array()" fonksiyonu ile oluşturulmuştur. Dizi içindeki öğelere erişmek için, öğenin indis numarasını kullanarak diziye erişilir. Sonuç olarak, ekranda "The third element of the array is: 3" mesajı görüntülenecektir.
-
-## İlişkisel Diziler
-
-İlişkisel diziler, öğelerin anahtar-değer çiftleri olarak saklandığı dizilerdir. İlişkisel diziler, "array()" fonksiyonu veya kısa sözdizimi ile oluşturulabilir. Anahtarlar, diziye eklenen öğelerin isimleri olarak kullanılır ve değerler, anahtarlarla eşleştirilir. Örneğin:
-```php
-<?php
-$person = array(
-    "name" => "John",
-    "age" => 30,
-    "city" => "New York"
-);
-echo "Kişinin adı: " . $person["name"];
-?>
-```
-Bu örnekte, $person dizisi, "name", "age" ve "city" anahtarlarına sahip öğelerle oluşturulur. Öğelere erişmek için, öğenin anahtarını kullanarak diziye erişilir. Sonuç olarak, ekranda "The person's name is: John" mesajı görüntülenecektir.
-
-## Dizi Fonksiyonları
-
-PHP'de, diziler için birçok faydalı fonksiyon bulunmaktadır. Bazı yaygın kullanılan dizi fonksiyonları şunlardır:
-
--   count() - Dizideki öğe sayısını döndürür.
--   sort() - Diziyi küçükten büyüğe sıralar.
--   rsort() - Diziyi büyükten küçüğe sıralar.
--   array_push() - Dizinin sonuna bir veya daha fazla öğe ekler.
--   array_pop() - Dizinin sonundan bir öğe çıkarır.
-
-Örneğin, "count()" fonksiyonu ile bir dizinin eleman sayısı bulunabilir:
-```php
-<?php
-$numbers = array(1, 2, 3, 4, 5);
-$count = count($numbers);
-echo "Dizideki eleman sayısı: " . $count;
-?>
-```
-Bu örnekte, "count()" fonksiyonu, $numbers dizisindeki öğe sayısını döndürür. Sonuç olarak, ekranda "The number of elements in the array is: 5" mesajı görüntülenecektir.
-### sort()
-
-Diziyi sıralar. Örneğin:
-```php
-<?php
-$numbers = array(5, 4, 3, 2, 1);
-sort($numbers);
-echo "Sıralanmış dizi: ";
-foreach ($numbers as $num) {
-    echo $num . " ";
-}
-?>
-```
-Bu örnekte, "sort()" fonksiyonu, $numbers dizisindeki öğeleri sıralar. Dizideki öğeler artan sıraya göre sıralanır. Sonuç olarak, ekranda "The sorted array is: 1 2 3 4 5" mesajı görüntülenecektir.
-
-### array_push()
-
-Diziye bir veya daha fazla öğe ekler. Örneğin:
-```php
-<?php
-$fruits = array("elma", "portakal");
-array_push($fruits, "muz", "armut");
-echo "Güncellenmiş dizi: ";
-foreach ($fruits as $fruit) {
-    echo $fruit . " ";
-}
-?>
-```
-Bu örnekte, "array_push()" fonksiyonu, $fruits dizisine "banana" ve "pear" öğelerini ekler. Sonuç olarak, ekranda "The updated array is: apple orange banana pear" mesajı görüntülenecektir.
-
-## Özet  
-Bugünkü makalede, PHP  dizileri  hakkında  temel  bilgileri öğrendik. Diziler, birden çok  değeri  saklamak  ve  işlemek  için  kullanışlı bir  veri  yapısıdır. Dizilerin  tanımlanması, elemanlarına  erişimi, elemanlarını değiştirme, döngülerle  işleme  ve  fonksiyonlarla  işleme  konularını ele  aldık. İlerideki  makalelerde, dizilerin  daha  gelişmiş konularını ele  alacağız.
-
-# Gün 7: PHP Fonksiyonları
 
 Bugünkü makalede, PHP fonksiyonlarını ele alacağız. Fonksiyonlar, programlamada tekrarlanan işlemleri kolaylaştıran ve kodun daha düzenli olmasını sağlayan bir yapıdır. Fonksiyonlar, belirli bir görevi yerine getiren ve belirli bir değer döndüren birimlerdir. PHP'de, birçok hazır fonksiyon bulunurken, aynı zamanda kendi fonksiyonlarımızı da oluşturabiliriz.
 
@@ -510,3 +381,88 @@ echo $sonuc; // 7
 
 ```
 Burada, `$sonuc` değişkeni fonksiyon içinde tanımlanmış, hesaplanmış ve `return` anahtar kelimesi ile döndürülmüştür. Döndürülen bu değer, `$sonuc` değişkenine atanarak fonksiyon dışında kullanılabilir hale getirilmiştir.
+
+# Gün 6: PHP Diziler
+
+Diziler, belirli bir türdeki verileri tutmak için kullanılan veri yapılarıdır. Diziler, tek bir değişken içinde çok sayıda değer saklamak için kullanılabilir. PHP'de, diziler iki türde olabilir: indisli diziler ve ilişkisel diziler.
+
+## İndisli Diziler
+
+İndisli diziler, her öğenin bir indis numarası ile belirtildiği dizilerdir. İndis numaraları sıfırdan başlar ve her öğenin farklı bir indis numarası vardır. İndisli diziler, "array()" fonksiyonu veya kısa sözdizimi ile oluşturulabilir. Örneğin:
+```php
+<?php
+$numbers = array(1, 2, 3, 4, 5);
+echo "The third element of the array is: " . $numbers[2];
+?>
+```
+Bu örnekte, $numbers dizisi "array()" fonksiyonu ile oluşturulmuştur. Dizi içindeki öğelere erişmek için, öğenin indis numarasını kullanarak diziye erişilir. Sonuç olarak, ekranda "The third element of the array is: 3" mesajı görüntülenecektir.
+
+## İlişkisel Diziler
+
+İlişkisel diziler, öğelerin anahtar-değer çiftleri olarak saklandığı dizilerdir. İlişkisel diziler, "array()" fonksiyonu veya kısa sözdizimi ile oluşturulabilir. Anahtarlar, diziye eklenen öğelerin isimleri olarak kullanılır ve değerler, anahtarlarla eşleştirilir. Örneğin:
+```php
+<?php
+$person = array(
+    "name" => "John",
+    "age" => 30,
+    "city" => "New York"
+);
+echo "Kişinin adı: " . $person["name"];
+?>
+```
+Bu örnekte, $person dizisi, "name", "age" ve "city" anahtarlarına sahip öğelerle oluşturulur. Öğelere erişmek için, öğenin anahtarını kullanarak diziye erişilir. Sonuç olarak, ekranda "The person's name is: John" mesajı görüntülenecektir.
+
+## Dizi Fonksiyonları
+
+PHP'de, diziler için birçok faydalı fonksiyon bulunmaktadır. Bazı yaygın kullanılan dizi fonksiyonları şunlardır:
+
+-   count() - Dizideki öğe sayısını döndürür.
+-   sort() - Diziyi küçükten büyüğe sıralar.
+-   rsort() - Diziyi büyükten küçüğe sıralar.
+-   array_push() - Dizinin sonuna bir veya daha fazla öğe ekler.
+-   array_pop() - Dizinin sonundan bir öğe çıkarır.
+
+Örneğin, "count()" fonksiyonu ile bir dizinin eleman sayısı bulunabilir:
+```php
+<?php
+$numbers = array(1, 2, 3, 4, 5);
+$count = count($numbers);
+echo "Dizideki eleman sayısı: " . $count;
+?>
+```
+Bu örnekte, "count()" fonksiyonu, $numbers dizisindeki öğe sayısını döndürür. Sonuç olarak, ekranda "The number of elements in the array is: 5" mesajı görüntülenecektir.
+### sort()
+
+Diziyi sıralar. Örneğin:
+```php
+<?php
+$numbers = array(5, 4, 3, 2, 1);
+sort($numbers);
+echo "Sıralanmış dizi: ";
+foreach ($numbers as $num) {
+    echo $num . " ";
+}
+?>
+```
+Bu örnekte, "sort()" fonksiyonu, $numbers dizisindeki öğeleri sıralar. Dizideki öğeler artan sıraya göre sıralanır. Sonuç olarak, ekranda "The sorted array is: 1 2 3 4 5" mesajı görüntülenecektir.
+
+### array_push()
+
+Diziye bir veya daha fazla öğe ekler. Örneğin:
+```php
+<?php
+$fruits = array("elma", "portakal");
+array_push($fruits, "muz", "armut");
+echo "Güncellenmiş dizi: ";
+foreach ($fruits as $fruit) {
+    echo $fruit . " ";
+}
+?>
+```
+Bu örnekte, "array_push()" fonksiyonu, $fruits dizisine "banana" ve "pear" öğelerini ekler. Sonuç olarak, ekranda "The updated array is: apple orange banana pear" mesajı görüntülenecektir.
+
+## Özet  
+Bugünkü makalede, PHP  dizileri  hakkında  temel  bilgileri öğrendik. Diziler, birden çok  değeri  saklamak  ve  işlemek  için  kullanışlı bir  veri  yapısıdır. Dizilerin  tanımlanması, elemanlarına  erişimi, elemanlarını değiştirme, döngülerle  işleme  ve  fonksiyonlarla  işleme  konularını ele  aldık. İlerideki  makalelerde, dizilerin  daha  gelişmiş konularını ele  alacağız.
+
+Gün 7: PHP Dosya İşlemleri
+
