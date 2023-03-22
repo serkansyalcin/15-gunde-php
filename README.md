@@ -1239,3 +1239,47 @@ SOAP, Simple Object Access Protocol'ün kısaltmasıdır ve web servisleri için
 RESTful API, Representational State Transfer anlamına gelir ve modern web uygulamaları için popüler bir web servisi arayüzüdür. RESTful API'ler, web uygulamaları arasında veri alışverişinin yapılmasına olanak sağlar. Bu API'ler, genellikle JSON veya XML formatında veri döndürürler ve birçok programlama dili tarafından desteklenirler.
 
 Web servisleri, farklı platformlar arasında veri paylaşımına olanak tanıyan bir teknolojidir. Web servisleri, önceden belirlenmiş bir protokol ve veri formatı kullanarak veri alışverişi yaparlar. Bu sayede, farklı programlama dillerinde yazılmış uygulamalar arasında veri alışverişi yapmak mümkün hale gelir. Web servisleri genellikle SOAP veya RESTful API gibi teknolojiler kullanılarak geliştirilir.
+
+# Gün 14: PHP Güvenliği
+PHP, web uygulamaları için oldukça popüler bir programlama dilidir. Ancak, PHP uygulamaları da potansiyel olarak saldırılara açık olabilirler. Bu nedenle, güvenli bir PHP kodu yazmak son derece önemlidir.
+
+### Güvenli Kodlama Uygulamaları
+
+PHP kodunun güvenliği, kodun doğru şekilde yazılmasından başlar. Güvenli kodlama uygulamaları, kodun güvenliğini sağlamak için kullanılacak teknikler ve prosedürlerdir. Bu uygulamalar, kodun doğru şekilde yazılmasını, hata ayıklama, test ve güncelleme işlemlerinin yapılmasını ve güvenliği arttırmak için gerekli düzeltmelerin yapılmasını kapsar.
+
+PHP uygulamaları için güvenli kodlama uygulamaları, güvenli kodlama standartlarına uyulmasını sağlayarak, uygulamaların güvenliğini artırır. Güvenli kodlama uygulamaları şunları içerebilir:
+
+-   Güvenli bir veri tabanı bağlantısı sağlamak için PDO kullanmak
+-   Veri girişlerini temizlemek için filtreleme işlevlerini kullanmak
+-   Veri girişlerini doğrulamak için doğrulama işlevlerini kullanmak
+-   SQL sorgularını hazırlamak için hazır işlevleri kullanmak
+-   Şifreleme işlemleri için PHP'nin dahili şifreleme işlevlerini kullanmak
+-   Kullanıcı girişleri gibi verilerin güvenli bir şekilde işlenmesi
+-   Veritabanı sorgularının doğru şekilde yapılandırılması ve filtrelenmesi
+-   Güvenli oturum yönetimi için oturum verilerinin doğru şekilde saklanması
+-   PHP güncellemelerinin düzenli olarak yapılması
+
+### XSS (Cross-Site Scripting) ve CSRF (Cross-Site Request Forgery)
+
+XSS, Cross-Site Scripting anlamına gelir ve web uygulamalarının güvenliği için önemli bir tehdit oluşturur. XSS, web uygulamalarına kötü niyetli kodların enjekte edilmesi ile gerçekleşir. Bu kodlar, kullanıcıların tarayıcılarında çalıştırılabilir ve kullanıcıların gizli bilgilerini ele geçirme ya da zararlı işlemler gerçekleştirme amacıyla kullanılabilir.
+
+CSRF, Cross-Site Request Forgery anlamına gelir ve bir kullanıcının tarayıcısı üzerinden, kötü niyetli bir web sitesi tarafından, bir başka web sitesindeki işlemleri gerçekleştirmesi için zorlanmasıdır. Bu işlemler, kullanıcının izni olmadan gerçekleştirilebilir ve örneğin, para transferi ya da hesap silme gibi ciddi sonuçlar doğurabilir.
+
+### SQL Enjeksiyonu ve Önleme Yöntemleri
+
+SQL enjeksiyonu, web uygulamalarına saldırmak için yaygın olarak kullanılan bir yöntemdir. SQL enjeksiyonu, web uygulamalarının güvenlik duvarlarını aşarak, veritabanı sorgularına kötü niyetli kodların enjekte edilmesi ile gerçekleşir. Bu kodlar, veritabanından bilgi çalmaya ya da veritabanındaki verileri değiştirmeye yöneliktir.
+
+SQL enjeksiyonu önleme yöntemleri arasında, veritabanı sorgularının doğru şekilde yapılandırılması ve filtrelenmesi yer alır. Bu yöntemler, SQL enjeksiyonu saldırılarına karşı etkili bir koruma sağlayabilir.
+
+## Güvenli Oturum Yönetimi ve Şifreleme
+
+Güvenli oturum yönetimi, kullanıcıların oturum açma bilgilerinin korunmasını sağlar. Bu nedenle, oturum açma bilgileri (kullanıcı adı, şifre vb.) şifrelenmeli ve güvenli bir şekilde saklanmalıdır. Ayrıca, oturum süresi ve oturum verilerinin doğrulanması gibi önlemler alınmalıdır.
+
+## Örnek Uygulama: Bir Şifre Yönetim Uygulaması
+
+Bir şifre yönetim uygulaması, kullanıcıların farklı hesaplarının şifrelerini güvenli bir şekilde saklamasını sağlar. Bu tür bir uygulama, güvenli oturum yönetimi, şifreleme ve doğru veri doğrulama tekniklerini kullanarak güvenli bir şekilde girdi verilerini doğrulamalıdır. Ayrıca, SQL enjeksiyonu ve XSS gibi saldırılara karşı önlem alınmalıdır. Aşağıda, bir şifre yönetim uygulaması için alınabilecek güvenlik önlemlerinin bir özeti verilmiştir:
+-   Kullanıcı şifreleri şifrelenerek depolanmalıdır. Bu, şifrelerin depolanırken çalınmasını veya görüntülenmesini engeller.
+-   Kullanıcılar için güçlü şifreler zorunlu olmalıdır. Bu, saldırganların kolayca tahmin edebilecekleri zayıf şifrelerin kullanılmasını engeller.
+-   Kullanıcıların girdi verileri doğrulanmalıdır. Bu, saldırganların kullanıcıların hesaplarına erişmelerine izin veren kötü amaçlı girdileri enjekte etmelerini engeller.
+-   Güvenli oturum yönetimi kullanılmalıdır. Bu, kullanıcıların oturum açma bilgilerinin korunmasını sağlar.
+-   XSS ve CSRF gibi saldırılara karşı önlem alınmalıdır. Bu, saldırganların web uygulamasına kötü amaçlı kodları enjekte etmelerine veya istemci taraflı işlemleri gerçekleştirmelerine izin vermez.
