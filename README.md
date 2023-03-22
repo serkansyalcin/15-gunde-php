@@ -959,4 +959,221 @@ class ChildClass extends FinalClass {
 
 `Final` anahtar kelimesi, bir sınıfın veya öğenin değiştirilemez olduğunu belirtmek için kullanılır. Bu kısıtlama, bir sınıfın veya öğenin alt sınıflar tarafından değiştirilemeyeceği anlamına gelir. Bu, bir uygulamanın belirli bir sınıfın veya öğenin davranışını garanti altına almasına yardımcı olur.
 
+# Gün 11: PHP Web Uygulamaları
+PHP, web uygulamaları geliştirmek için popüler bir seçimdir. PHP, sunucu tarafında çalıştığından, web uygulamaları için ideal bir dildir. PHP, HTML, CSS ve JavaScript gibi diğer web teknolojileriyle kolayca birleştirilebilir.
 
+### PHP Web Uygulamaları Örnekleri
+
+#### Form İşleme
+
+Web uygulamaları, kullanıcıların verileri sunucuya göndermesi için formlar kullanır. Bu formlar, kullanıcının girdiği verileri PHP tarafında işlemek için kullanılır. Örneğin, bir kullanıcının bir ad, soyad ve e-posta adresi girmesini isteyen bir form oluşturabiliriz. Bu verileri sunucuya gönderdikten sonra, PHP tarafında bu verileri alabilir, doğrulayabilir ve bir veri tabanına kaydedebiliriz.
+```php
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  // Form verilerini al
+  $name = $_POST["name"];
+  $surname = $_POST["surname"];
+  $email = $_POST["email"];
+
+  // Form verilerini işle
+  // ...
+
+  // Veritabanına kaydet
+  // ...
+}
+?>
+
+<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+  Ad: <input type="text" name="name"><br>
+  Soyad: <input type="text" name="surname"><br>
+  E-posta: <input type="text" name="email"><br>
+  <input type="submit" value="Gönder">
+</form>
+
+?>
+```
+#### Oturum Yönetimi
+
+Web uygulamaları, kullanıcının kimliğini doğrulamak ve oturum açıkken kullanıcının oturum bilgilerini saklamak için oturum yönetimi kullanır. PHP, bu işlevselliği kolayca sağlar. Örneğin, bir kullanıcının oturum açmasını isteyen bir uygulama oluşturabiliriz.
+
+```php
+<?php
+session_start();
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  // Kullanıcı adı ve şifreyi al
+  $username = $_POST["username"];
+  $password = $_POST["password"];
+
+  // Kullanıcı adı ve şifre doğruysa oturum başlat
+  if ($username == "admin" && $password == "1234") {
+    $_SESSION["username"] = $username;
+    header("Location: home.php");
+    exit;
+  } else {
+    $error = "Kullanıcı adı veya şifre hatalı.";
+  }
+}
+?>
+
+<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+  Kullanıcı Adı: <input type="text" name="username"><br>
+  Şifre: <input type="password" name="password"><br>
+  <input type="submit" value="Giriş">
+</form>
+
+?>
+```
+####  HTML ve CSS ile PHP Entegrasyonu
+
+Web uygulamaları, genellikle veritabanlarıyla etkileşim halindedir. PHP, MySQL ve diğer veritabanlarıyla kolayca etk
+
+
+```php
+<!DOCTYPE html>
+<html>
+<head>
+	<title>PHP ile Entegrasyon</title>
+</head>
+<body>
+
+	<h1>Merhaba, <?php echo "Dünya"; ?>!</h1>
+
+	<?php
+		$yil = date("Y");
+		$ay = date("m");
+		$gun = date("d");
+		$saat = date("H");
+		$dakika = date("i");
+		$saniye = date("s");
+		echo "<p>Tarih: $gun/$ay/$yil Saat: $saat:$dakika:$saniye</p>";
+	?>
+
+</body>
+</html>
+
+?>
+```
+Yukarıdaki örnekte, `<?php ?>` etiketleri arasında PHP kodu yer alır. Bu kodlar, HTML kodunun içinde doğrudan kullanılabilir. Örneğin, yukarıdaki örnekte, `Merhaba, <?php echo "Dünya"; ?>!` satırında, `echo` fonksiyonu kullanılarak "Dünya" yazısı HTML içinde görüntülenir.
+
+CSS kodu ve PHP kodu içeren bir örnek aşağıda verilmiştir:
+
+
+```php
+<?php
+$name = "Serkan";
+$age = 25;
+?>
+```
+
+
+
+```php
+<?php
+<!DOCTYPE html>
+<html>
+<head>
+	<title>PHP ile Entegrasyon</title>
+	<style>
+		<?php
+			$renk = "blue";
+			echo "body { background-color: $renk; }";
+		?>
+	</style>
+</head>
+<body>
+
+	<h1>Merhaba, <?php echo "Dünya"; ?>!</h1>
+
+	<?php
+		$yil = date("Y");
+		$ay = date("m");
+		$gun = date("d");
+		$saat = date("H");
+		$dakika = date("i");
+		$saniye = date("s");
+		echo "<p>Tarih: $gun/$ay/$yil Saat: $saat:$dakika:$saniye</p>";
+	?>
+
+</body>
+</html>
+
+?>
+```
+Yukarıdaki örnekte, PHP kodu, `<style>` etiketleri arasında yer alır. Bu kodlar, CSS kodunun içinde doğrudan kullanılabilir. Örneğin, yukarıdaki örnekte, `$renk` değişkeni PHP kodu kullanılarak belirlenir ve `body` elementinin `background-color` özelliği belirlenir.
+
+PHP, HTML ve CSS ile birlikte kullanıldığında, web siteleri dinamik hale gelebilir ve daha fazla işlevsellik sağlayabilir. Ancak, güvenliği sağlamak ve doğru çalışmayı sağlamak için en iyi uygulamaları kullanmak önemlidir.
+
+### Form Doğrulama ve Hataların İşlenmesi
+Web uygulamalarında, kullanıcıların girdiği verilerin doğruluğunu kontrol etmek ve hataların işlenmesi, güvenli ve kullanılabilir bir uygulama oluşturmak için önemlidir. PHP, form verilerinin doğruluğunu kontrol etmek ve hataları işlemek için birçok fonksiyon ve yöntem sağlar.
+
+### Form Doğrulama
+
+Form doğrulama, kullanıcıların girdiği verilerin doğruluğunu kontrol etmek için kullanılır. Bu işlem, verilerin uygun biçimde doldurulmasını sağlar ve hatalı girişlerin yapılmasını önler.
+
+Form doğrulama için, PHP'de `filter_var()` fonksiyonu kullanılabilir. Bu fonksiyon, bir değerin belirli bir filtreden geçip geçmediğini kontrol eder. Örneğin, `FILTER_VALIDATE_EMAIL` filtresi, bir e-posta adresinin doğruluğunu kontrol eder.
+```php
+<?php
+$email = $_POST["email"];
+
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    echo "Geçersiz e-posta adresi";
+}
+
+?>
+```
+Yukarıdaki örnekte, `$_POST` değişkeni ile gönderilen `email` verisi `filter_var()` fonksiyonu ile kontrol edilir ve eğer geçersizse bir hata mesajı gösterilir.
+
+###  Oturum Yönetimi: $_SESSION ve $_COOKIE
+PHP'de oturum yönetimi, kullanıcının siteye giriş yaptığında kullanıcı bilgilerini ve diğer verileri saklamak için kullanılır. Oturum yönetimi, PHP'de $_SESSION ve $_COOKIE değişkenleri kullanılarak gerçekleştirilir.
+
+$_SESSION değişkeni, oturum bilgilerini saklamak için kullanılır. Oturum başlatıldığında, $_SESSION değişkeni boş bir dizi olarak oluşturulur ve oturum sırasında değiştirilebilir.
+
+Örneğin, bir kullanıcının giriş yaptığı bir uygulama düşünelim. Kullanıcının giriş yaptığında, kullanıcı adı $_SESSION değişkenine kaydedilebilir ve diğer sayfalarda kullanılabilir. Örneğin:
+
+```php
+<?php
+session_start(); // Oturum başlatma
+$_SESSION["kullanici_adi"] = "serkanyalcin";
+?>
+```
+Bu örnekte, oturum başlatılır ve $_SESSION değişkeni, "kullanici_adi" anahtarına sahip bir dizi olarak oluşturulur. Kullanıcı adı, diziye kaydedilir.
+
+$_COOKIE değişkeni, tarayıcıda saklanan çerezlerle çalışır. Bir çerez, bir web sitesi tarafından tarayıcıya gönderilen küçük bir dosyadır ve tarayıcı tarafından saklanır. Çerezler, oturum bilgileri, kullanıcı tercihleri vb. gibi verileri depolamak için kullanılabilir.
+
+Örneğin, bir kullanıcının tercihlerini saklamak için $_COOKIE kullanılabilir:
+
+```php
+<?php
+setcookie("kullanici_tercihleri", "ornek_tercihler", time() + (86400 * 30), "/");
+?>
+```
+Bu örnekte, "kullanici_tercihleri" adında bir çerez oluşturulur ve "ornek_tercihler" olarak ayarlanır. Çerez, tarayıcıda 30 gün boyunca saklanacak şekilde ayarlanır.
+
+Özetle, $_SESSION ve $_COOKIE değişkenleri, PHP'de oturum yönetimi için kullanılır. $_SESSION değişkeni, sunucuda saklanan oturum bilgileri için kullanılırken, $_COOKIE değişkeni, tarayıcıda saklanan çerezlerle çalışır. Bu yöntemler, kullanıcıların siteye giriş yaparken ve diğer verileri saklamak istediklerinde kullanışlıdır.
+
+Örneğin, bir oturum açma işlemi gerçekleştirirken, kullanıcının giriş yaptığı bilgileri $_SESSION değişkenine kaydedebiliriz. Daha sonra, kullanıcı diğer sayfalarda gezinirken, bu oturum bilgileri $_SESSION değişkeninde saklanır ve istediğimiz zaman kullanılabilir.
+
+```php
+<?php
+session_start(); // Oturum başlatma
+$_SESSION["kullanici_id"] = $kullanici_id;
+?>
+```
+Bu örnekte, oturum başlatılır ve kullanıcının kimliği ve adı $_SESSION değişkenine kaydedilir. Bu bilgiler, kullanıcının giriş yaptığı sürece oturum boyunca saklanacaktır.
+
+Öte yandan, çerezler $_COOKIE değişkeni kullanılarak oluşturulur ve saklanır. Örneğin, bir kullanıcının siteye son ziyaretinde seçtiği dil seçeneğini saklamak istediğimizi varsayalım. Bu bilgi bir çerezde saklanabilir ve kullanıcının sonraki ziyaretlerinde dil seçeneği otomatik olarak seçilebilir.
+
+```php
+<?php
+$dil = "tr"; // varsayılan dil
+if (isset($_COOKIE["dil"])) {
+    $dil = $_COOKIE["dil"];
+} else {
+    setcookie("dil", $dil, time() + (86400 * 30), "/");
+}
+?>
+```
+Bu örnekte, "dil" adında bir çerez oluşturulur ve varsayılan olarak "tr" olarak ayarlanır. Kullanıcı daha önce bir dil seçtiyse, çerezden bu seçim alınır. Eğer bir dil seçimi yoksa, varsayılan dil çerezde kaydedilir.
+
+Bu örnekler, oturum yönetimi için $_SESSION ve $_COOKIE değişkenlerinin nasıl kullanılabileceğini göstermektedir. Bu değişkenler, kullanıcıların oturum bilgilerini ve diğer verileri saklamak için çok kullanışlıdır. Ancak, güvenlik konusunda dikkatli olmak önemlidir.
