@@ -516,3 +516,111 @@ if(rename("eski_dosya.txt", "yeni_dosya.txt")) {
 ```
 Bu örnekler, PHP'de dosya işlemleri yapmanız için gerekli olan temel fonksiyonları göstermektedir. Bu fonksiyonları kullanarak, dosya işlemlerini kolayca yapabilirsiniz.
 
+
+# Gün 8: PHP Veritabanı İşlemleri
+PHP ile veritabanı işlemleri yapmak için PDO (PHP Data Objects) veya mysqli (MySQL Improved) gibi bir veritabanı sürücüsü kullanabilirsiniz. Bu sürücüler, MySQL, PostgreSQL, SQLite vb. gibi farklı veritabanı yöneticileriyle etkileşim kurmanıza olanak tanır. İşte bazı örnekler:
+
+### PDO Kullanarak Veritabanına Bağlanma
+```php
+<?php
+$host = 'localhost';
+$dbname = 'my_database';
+$username = 'my_username';
+$password = 'my_password';
+
+try {
+  $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+  echo "Veritabanına başarıyla bağlandı!";
+} catch(PDOException $e) {
+  echo "Bağlantı hatası: " . $e->getMessage();
+}
+?>
+### mysqli Kullanarak Veritabanına Bağlanma
+```php
+<?php
+if(rename("eski_dosya.txt", "yeni_dosya.txt")) {
+  echo "Dosya taşındı.";
+} else {
+  echo "Dosya taşınamadı.";
+}
+?>
+```
+### mysqli Kullanarak Veritabanına Bağlanma
+```php
+<?php
+$host = 'localhost';
+$dbname = 'my_database';
+$username = 'my_username';
+$password = 'my_password';
+
+$conn = mysqli_connect($host, $username, $password, $dbname);
+
+if(!$conn) {
+  die("Bağlantı hatası: " . mysqli_connect_error());
+}
+
+echo "Veritabanına başarıyla bağlandı!";
+
+?>
+```
+### PDO Kullanarak Veri Ekleme
+```php
+<?php
+$stmt = $conn->prepare("INSERT INTO users (name, email) VALUES (:name, :email)");
+$stmt->bindParam(':name', $name);
+$stmt->bindParam(':email', $email);
+
+$name = 'John Doe';
+$email = 'john.doe@example.com';
+
+$stmt->execute();
+
+echo "Veri başarıyla eklendi!";
+
+?>
+```
+### mysqli Kullanarak Veri Ekleme
+```php
+<?php
+$sql = "INSERT INTO users (name, email) VALUES ('$name', '$email')";
+
+if(mysqli_query($conn, $sql)) {
+  echo "Veri başarıyla eklendi!";
+} else {
+  echo "Veri eklenirken hata oluştu: " . mysqli_error($conn);
+}
+
+?>
+```
+### PDO Kullanarak Veri Seçme
+```php
+<?php
+$stmt = $conn->prepare("SELECT * FROM users WHERE id=:id");
+$stmt->bindParam(':id', $id);
+$id = 1;
+$stmt->execute();
+
+$result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+echo "Kullanıcı Adı: " . $result['name'] . "<br>";
+echo "E-posta Adresi: " . $result['email'];
+
+?>
+```
+### mysqli Kullanarak Veri Seçme
+```php
+<?php
+$sql = "SELECT * FROM users WHERE id=1";
+$result = mysqli_query($conn, $sql);
+
+if(mysqli_num_rows($result) > 0) {
+  $row = mysqli_fetch_assoc($result);
+  echo "Kullanıcı Adı: " . $row['name'] . "<br>";
+  echo "E-posta Adresi: " . $row['email'];
+} else {
+  echo "Veri bulunamadı.";
+}
+
+?>
+```
+Bu örnekler, PDO ve mysqli kullanarak PHP'de veritabanı işlemlerini yapmak için gerekli olan temel işlemleri göstermektedir. Bu sürücülerin sağladığı diğer işlevleri de kullanarak, veritabanı işlemlerini daha da geliştirebilirsiniz.
