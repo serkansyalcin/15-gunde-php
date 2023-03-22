@@ -65,13 +65,9 @@
 -   Oluşturucu ve Yıkıcı Metotlar (Constructors and Destructors)
 -   Kalıtım (Inheritance) ve İşaretçiler (Pointers)
 
-# Gün 10: OOP İleri Konuları
+# Gün 10: Veri Yapıları ve Algoritmalar
 
--   Kapsülleme (Encapsulation) ve Erişim Belirteçleri (Access Modifiers)
--   Polimorfizm (Polymorphism) ve Arayüzler (Interfaces)
--   Soyut Sınıflar (Abstract Classes) ve Soyut Metotlar (Abstract Methods)
--   Olaylar (Events) ve Yönlendirme (Routing)
--   Örnek Uygulama: Bir Blog Sistemi
+Veri yapıları ve algoritmalar, herhangi bir programlama dilinde temel bir konudur ve PHP'de de önemlidir. PHP'de kullanabileceğiniz veri yapıları arasında diziler, yığınlar, kuyruklar, ağaçlar, grafikler vb. yer alır. Algoritma konuları arasında arama, sıralama, ikili arama, çift yönlü bağlı listeler, recursive fonksiyonlar vb. bulunur.
 
 # Gün 11: PHP Web Uygulamaları
 
@@ -958,6 +954,230 @@ class ChildClass extends FinalClass {
 ### Özetle
 
 `Final` anahtar kelimesi, bir sınıfın veya öğenin değiştirilemez olduğunu belirtmek için kullanılır. Bu kısıtlama, bir sınıfın veya öğenin alt sınıflar tarafından değiştirilemeyeceği anlamına gelir. Bu, bir uygulamanın belirli bir sınıfın veya öğenin davranışını garanti altına almasına yardımcı olur.
+
+# Gün 10: Veri Yapıları ve Algoritmalar
+Veri yapıları ve algoritmalar, herhangi bir programlama dilinin temel konularıdır. PHP de veri yapıları ve algoritmalar konusunda zengin bir kütüphane sunar ve programcıların kodlarını daha performanslı ve optimize edilmiş hale getirmelerine yardımcı olur.
+
+## Veri Yapıları
+
+### Diziler (Arrays)
+
+Diziler, PHP'de en sık kullanılan veri yapılarından biridir. Diziler, tek bir değişken içinde birden fazla değer saklamak için kullanılır. Dizileri oluşturmak için `array()` veya `[]` işaretleri kullanılır.
+
+```php
+<?php
+$numbers = array(1, 2, 3, 4, 5);
+$fruits = ['elma', 'muz', 'şeftali'];
+?>
+```
+
+```php
+<?php
+// Sıralı dizi oluşturma
+$sayilar = array(3, 1, 4, 1, 5, 9, 2, 6, 5, 3);
+
+// Dizinin eleman sayısını almak
+$elemanSayisi = count($sayilar);
+
+// Dizinin elemanlarını sıralamak
+sort($sayilar);
+
+// Dizinin elemanlarını tersten sıralamak
+rsort($sayilar);
+
+// Dizinin elemanlarını tekrarlayanları çıkarmak
+$benzersizSayilar = array_unique($sayilar);
+
+// Dizide bir elemanın var olup olmadığını kontrol etmek
+if (in_array(3, $sayilar)) {
+    echo "Dizide 3 var.";
+}
+?>
+```
+Diziler, indis numaralarına göre veya anahtar-değer çiftleriyle erişilebilir.
+```php
+<?php
+echo $numbers[0];  // 1
+echo $fruits['1']; // muz
+?>
+```
+## İlişkisel Diziler (Associative Arrays)
+
+İlişkisel diziler, dizi elemanlarının anahtar-değer çiftleri olarak saklandığı bir dizi türüdür. Anahtarlar, elemanlara benzersiz bir şekilde erişim sağlar ve değerler, elemanların taşıdığı verileri temsil eder.
+
+```php
+<?php
+// İlişkisel dizi oluşturma
+$ogrenci = array(
+    "adi" => "Ali",
+    "soyadi" => "Yalçın",
+    "yas" => 21,
+    "notlar" => array(75, 85, 90)
+);
+
+// İlişkisel dizinin elemanına erişim
+echo "Öğrencinin adı: " . $ogrenci["adi"];
+
+// İlişkisel dizinin elemanını güncelleme
+$ogrenci["yas"] = 22;
+
+// İlişkisel dizinin elemanlarını listelemek
+foreach ($ogrenci as $anahtar => $deger) {
+    echo "$anahtar: $deger\n";
+}
+?>
+```
+
+### Listeler (Lists)
+
+Listeler, dizilerin bir türüdür ve birden fazla değeri bir değişkende saklamak için kullanılır. Listeler, `list()` işlevi kullanılarak oluşturulur.
+
+```php
+<?php
+list($name, $surname, $age) = ['Serkan', 'Yalçın', 25];
+echo $name; // Serkan
+?>
+```
+## Yığın (Stack)
+
+Yığın, son giren ilk çıkar (LIFO) prensibiyle çalışan bir veri yapısıdır. PHP'de yığın, `array_push()` ve `array_pop()` işlevleri kullanılarak uygulanabilir.
+
+```php
+<?php
+$list = new SplDoublyLinkedList();
+$list->push("Serkan");
+$list->push("Ali");
+$list->push("Yusuf");
+
+$list->rewind();
+while($list->valid()) {
+  echo $list->current() . "\n";
+  $list->next();
+}
+// çıktı:
+// Serkan
+// Ali
+// Yusuf
+
+?>
+```
+## Sıralama Algoritmaları
+Sıralama algoritmaları, bir dizi veriyi belirli bir düzene göre sıralamak için kullanılan algoritmalardır. Bu algoritmalar, farklı veri yapıları ve işlem zorluklarına göre seçilebilir. PHP'de sık kullanılan sıralama algoritmaları şunlardır:
+
+1.  Bubble Sort (Kabarcık Sıralaması): Bu algoritma, dizi elemanlarını sırayla karşılaştırarak, küçükten büyüğe veya büyükten küçüğe doğru sıralama yapar. Bu sıralama algoritması, küçük boyutlu diziler için uygun olabilir ancak büyük boyutlu diziler için verimli değildir.
+
+```php
+<?php
+function bubbleSort($arr) {
+  $n = count($arr);
+  for($i = 0; $i < $n; $i++) {
+    for($j = 0; $j < $n - $i - 1; $j++) {
+      if($arr[$j] > $arr[$j+1]) {
+        $temp = $arr[$j];
+        $arr[$j] = $arr[$j+1];
+        $arr[$j+1] = $temp;
+      }
+    }
+  }
+  return $arr;
+}
+
+$arr = [64, 34, 25, 12, 22, 11, 90];
+$result = bubbleSort($arr);
+print_r($result); // [11, 12, 22, 25, 34, 64, 90]
+?>
+```
+2.  Selection Sort (Seçmeli Sıralama): Bu algoritma, dizinin en küçük veya en büyük elemanını bulmak için elemanları teker teker dolaşır ve sıralar. Bu sıralama algoritması, küçük boyutlu diziler için uygun olabilir ancak büyük boyutlu diziler için verimli değildir.
+
+```php
+<?php
+function selectionSort($arr) {
+  $n = count($arr);
+  for($i = 0; $i < $n - 1; $i++) {
+    $min_index = $i;
+    for($j = $i + 1; $j < $n; $j++) {
+      if($arr[$j] < $arr[$min_index]) {
+        $min_index = $j;
+      }
+    }
+    $temp = $arr[$i];
+    $arr[$i] = $arr[$min_index];
+    $arr[$min_index] = $temp;
+  }
+  return $arr;
+}
+
+$arr = [64, 34, 25, 12, 22, 11, 90];
+$result = selectionSort($arr);
+print_r($result); // [11, 12, 22, 25, 34, 64, 90]
+?>
+```
+3.  Insertion Sort (Ekleme Sıralaması): Bu algoritma, dizi elemanlarını sırayla karşılaştırarak, elemanları doğru konuma yerleştirir. Bu sıralama algoritması, küçük boyutlu diziler için uygun olabilir ancak büyük boyutlu diziler için verimli değildir.
+
+### Arama Algoritmaları
+#### Lineer Arama (Linear Search)
+
+Lineer arama, bir dizide belirli bir öğenin var olup olmadığını kontrol etmek için kullanılan en basit arama algoritmasıdır. Bu algoritma, sıralanmamış bir dizide de kullanılabilir.
+
+Algoritma şu şekildedir:
+
+1.  Dizinin ilk elemanından başlayın ve sonuna kadar her bir elemanı kontrol edin.
+2.  Aranan öğe bulunana kadar devam edin.
+3.  Eğer aranan öğe bulunursa, indeksini döndürün. Aksi takdirde, öğe dizide yoktur.
+
+Lineer arama algoritmasının en kötü performansı, aranan öğenin dizinin son elemanında veya olmadığı durumlarda elde edilir.
+
+```php
+<?php
+function linearSearch($arr, $x) {
+    $n = count($arr);
+    for ($i = 0; $i < $n; $i++) {
+        if ($arr[$i] == $x) {
+            return $i;
+        }
+    }
+    return -1;
+}
+
+?>
+```
+#### Binary Search
+
+Binary search, sıralı bir dizide belirli bir öğenin var olup olmadığını kontrol etmek için kullanılan bir arama algoritmasıdır. Bu algoritma, bir sıralı dizide arama yapmak için daha hızlıdır.
+
+Algoritma şu şekildedir:
+
+1.  Dizinin orta elemanını kontrol edin.
+2.  Eğer aranan öğe ortadaki öğeden küçükse, dizi sol tarafından ortalanır ve ortalanmış dizinin sol tarafında arama yapılır.
+3.  Eğer aranan öğe ortadaki öğeden büyükse, dizi sağ tarafından ortalanır ve ortalanmış dizinin sağ tarafında arama yapılır.
+4.  Bu işlem, aranan öğe bulunana kadar tekrarlanır.
+
+Binary search algoritmasının en kötü performansı, öğe dizide yoksa veya öğenin dizinin ortasında olmadığı durumlarda elde edilir.
+```php
+<?php
+function binarySearch($arr, $x) {
+    $low = 0;
+    $high = count($arr) - 1;
+    while ($low <= $high) {
+        $mid = floor(($low + $high) / 2);
+        if ($arr[$mid] == $x) {
+            return $mid;
+        } elseif ($arr[$mid] > $x) {
+            $high = $mid - 1;
+        } else {
+            $low = $mid + 1;
+        }
+    }
+    return -1;
+}
+?>
+```
+
+## Big O Notasyonu
+
+Veri yapıları ve algoritmaların performansı, hesaplama gücü, bellek kullanımı gibi faktörlere göre ölçülür. Bu ölçümü yaparken genellikle Big O notasyonu kullanılır.
+
+Big O notasyonu, bir algoritmanın çalışma zamanını ifade eden matematiksel bir gösterimdir. En kötü durumda bir algoritmanın ne kadar zaman harcadığını ifade eder. Örneğin, bir dizide bir elemanı aramak için lineer arama kullanıldığında, Big O notasyonu O(n) olarak ifade edilir. Bu, aramanın bir elemanın bulunması durumunda dizinin tamamını tarayabileceği anlamına gelir. Buna karşılık, dizinin ortasındaki elemanı bulmak için kullanılan binary search algoritması O(log n) olarak ifade edilir. Bu, arama işleminin her adımda eleman sayısının yarısını eliyor olması nedeniyle logaritmik zaman karmaşıklığına sahip olduğunu gösterir.
 
 # Gün 11: PHP Web Uygulamaları
 PHP, web uygulamaları geliştirmek için popüler bir seçimdir. PHP, sunucu tarafında çalıştığından, web uygulamaları için ideal bir dildir. PHP, HTML, CSS ve JavaScript gibi diğer web teknolojileriyle kolayca birleştirilebilir.
