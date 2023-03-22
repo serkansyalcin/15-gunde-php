@@ -1177,3 +1177,36 @@ if (isset($_COOKIE["dil"])) {
 Bu örnekte, "dil" adında bir çerez oluşturulur ve varsayılan olarak "tr" olarak ayarlanır. Kullanıcı daha önce bir dil seçtiyse, çerezden bu seçim alınır. Eğer bir dil seçimi yoksa, varsayılan dil çerezde kaydedilir.
 
 Bu örnekler, oturum yönetimi için $_SESSION ve $_COOKIE değişkenlerinin nasıl kullanılabileceğini göstermektedir. Bu değişkenler, kullanıcıların oturum bilgilerini ve diğer verileri saklamak için çok kullanışlıdır. Ancak, güvenlik konusunda dikkatli olmak önemlidir.
+
+# Gün 12: PHP Framework'leri
+PHP Framework'leri, PHP ile web uygulamaları geliştirmek için kullanılan bir dizi kütüphane ve araç setidir. Framework'ler, birçok farklı görevi otomatikleştirir ve kolaylaştırır, böylece geliştiriciler uygulama kodlarına odaklanabilirler. Bu, web uygulamalarının daha hızlı, daha verimli ve daha güvenli bir şekilde geliştirilmesine olanak tanır.
+
+İşte en popüler PHP Framework'lerinden bazıları:
+
+## 1. Laravel
+
+Laravel, açık kaynaklı bir PHP web uygulama framework'üdür ve MVC (Model-View-Controller) tasarım desenini kullanır. Laravel, kullanıcı kimlik doğrulaması, veritabanı yönetimi, hata işleme ve birçok diğer özellik sağlar. Laravel, özellikle RESTful API'lerin geliştirilmesi için popülerdir.
+
+## 2. CodeIgniter
+
+CodeIgniter, açık kaynaklı bir PHP web uygulama framework'üdür ve MVC tasarım desenini kullanır. CodeIgniter, küçük ve orta ölçekli web uygulamaları için tasarlanmıştır. Kodu basit ve anlaşılırdır, böylece yeni başlayanlar tarafından kolayca öğrenilebilir.
+
+## 3. Symfony
+
+Symfony, açık kaynaklı bir PHP framework'üdür ve PHP 7.1 ve üstü sürümlerini destekler. Symfony, MVC tasarım desenini kullanır ve esnek bir mimariye sahiptir. Symfony, web uygulamalarının yanı sıra, web hizmetleri ve mikro hizmetlerin geliştirilmesinde de kullanılabilir.
+
+## 4. CakePHP
+
+CakePHP, PHP dilindeki en eski Framework'lerden biridir ve MVC yapısına dayalıdır. Özellikle büyük ölçekli web uygulamaları için uygundur. CakePHP, basit bir öğrenme eğrisine sahip olmasının yanı sıra, birçok hazır bileşen içerir.
+
+## 5. Zend Framework
+
+Zend Framework, hızlı ve güvenli web uygulamaları geliştirmek için kullanılan bir PHP Framework'üdür. MVC yapısına dayalıdır ve birçok hazır bileşen içerir. Zend Framework, özellikle büyük ölçekli web uygulamaları için uygundur ve basit bir öğrenme eğrisine sahiptir.
+
+Bu PHP Framework'leri, birçok farklı web uygulaması geliştirme senaryosuna uygunluk gösterirler. Laravel ve Symfony, büyük ölçekli web uygulamaları için uygunken, CodeIgniter ve CakePHP, küçük ve orta ölçekli web uygulamaları için daha uygun olabilir. Zend Framework ise, özellikle hızlı ve güvenli web uygulamaları geliştirmek için kullanılabilir.
+
+## 6. Yii Framework
+
+Yii Framework, hızlı ve güvenli web uygulamaları geliştirmek için kullanılan bir PHP Framework'üdür. MVC yapısına dayalıdır ve birçok hazır bileşen içerir. Özellikle büyük ölçekli web uygulamaları için uygundur. Yii Framework, birçok özellik sunar, örneğin Gii code generator, Active Record, i18n desteği ve authentication/authorization sistemi gibi. Ayrıca, performansıyla da dikkat çeker.
+
+Yii Framework, özellikle büyük ölçekli web uygulamaları geliştirmek isteyenler için tercih edilebilir. İleri düzey özellikleri, kolay öğrenme eğrisi ve performansı ile öne çıkar.
