@@ -534,15 +534,7 @@ try {
 } catch(PDOException $e) {
   echo "Bağlantı hatası: " . $e->getMessage();
 }
-?>
-### mysqli Kullanarak Veritabanına Bağlanma
-```php
-<?php
-if(rename("eski_dosya.txt", "yeni_dosya.txt")) {
-  echo "Dosya taşındı.";
-} else {
-  echo "Dosya taşınamadı.";
-}
+
 ?>
 ```
 ### mysqli Kullanarak Veritabanına Bağlanma
