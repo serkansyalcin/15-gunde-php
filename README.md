@@ -129,14 +129,14 @@ PHP, web sunucularında çalıştırılabilen bir betik dilidir. Web sunucusu, P
 
 PHP kodları, web sunucusunda veya yerel bir bilgisayarda PHP yorumlayıcısı tarafından yorumlanır. PHP yorumlayıcıları, PHP kodlarını çalıştırabilen uygulamalardır. En popüler PHP yorumlayıcıları arasında Apache, Nginx, IIS, XAMPP ve WAMP bulunur.
 
-## İlk PHP Programı
+## İlk PHP Uygulaması
 
-Bir PHP programı, .php uzantılı bir dosyada saklanabilir. Örneğin, hello.php adında bir dosya oluşturup içine aşağıdaki kodları yazabilirsiniz:
+Bir PHP uygulaması, .php uzantılı bir dosyada saklanabilir. Örneğin, hello.php adında bir dosya oluşturup içine aşağıdaki kodları yazabilirsiniz:
 ```php
-<?php  echo  "Hello, World!"; ?>
+<?php  echo  "Merhaba, Dünya!"; ?>
 ```
 
-Bu kod, "Hello, World!" metnini ekrana yazdıracaktır.
+Bu kod, "Merhaba, Dünya!" metnini ekrana yazdıracaktır.
 
 # Gün 2: PHP Değişkenleri ve Veri Türleri
 
@@ -146,7 +146,7 @@ Değişkenler, değerleri saklamak için kullanılan öğelerdir. PHP'de bir de�
 
 ```php
 <?php
-$name = "John";
+$name = "Serkan";
 $age = 25;
 ?>
 ```
@@ -157,7 +157,7 @@ Bu örnekte, $name değişkeni "John" değerini, $age değişkeni ise 25 değeri
 
 PHP'de kullanabileceğiniz farklı veri türleri vardır. En yaygın veri türleri şunlardır:
 
--   String: Metin verileri için kullanılır. Örneğin: "Hello, World!"
+-   String: Metin verileri için kullanılır. Örneğin: "Merhaba, Dünya!"
 -   Integer: Tam sayılar için kullanılır. Örneğin: 25
 -   Float: Ondalıklı sayılar için kullanılır. Örneğin: 3.14
 -   Boolean: Doğru veya yanlış değerlerini saklar. Örneğin: true veya false
@@ -169,7 +169,7 @@ PHP'de kullanabileceğiniz farklı veri türleri vardır. En yaygın veri türle
 PHP, farklı veri türleri arasında dönüşüm yapabilmenizi sağlar. Örneğin, bir string değeri integer'a veya float'a dönüştürebilirsiniz. Bunun için, hedef veri türünün adını parantez içinde belirterek (int) veya (float) gibi bir ifade kullanmanız yeterlidir. Örneğin:
 ```php
 <?php
-$name = "John";
+$name = "Serkan";
 $age = 25;
 ?>
 ```
@@ -276,12 +276,12 @@ Do-while döngüsü, en az bir kez kod bloğunu çalıştırmak ve belirli bir k
 <?php
 $x = 0;
 do {
-    echo "The number is: $x <br>";
+    echo "Sayı: $x <br>";
     $x++;
 } while ($x <= 10);
 ?>
 ```
-Bu örnekte, do-while döngüsü, $x değişkeninin 10'dan küçük veya eşit olup olmadığını kontrol eder. İlk yinelemede $x değeri 0 olduğu için, kod bloğu çalıştırılır ve ekranda "The number is: 0" mesajı görüntülenir. Sonraki yinelemelerde, $x değeri artırılır ve koşul doğru olduğu sürece kod bloğu tekrar çalıştırılır. Sonuç olarak, ekranda 0'dan 10'a kadar olan sayılar görüntülenecektir.
+Bu örnekte, do-while döngüsü, $x değişkeninin 10'dan küçük veya eşit olup olmadığını kontrol eder. İlk yinelemede $x değeri 0 olduğu için, kod bloğu çalıştırılır ve ekranda "Sayı: 0" mesajı görüntülenir. Sonraki yinelemelerde, $x değeri artırılır ve koşul doğru olduğu sürece kod bloğu tekrar çalıştırılır. Sonuç olarak, ekranda 0'dan 10'a kadar olan sayılar görüntülenecektir.
 
 # Gün 5: PHP Fonksiyonlar
 
@@ -392,7 +392,7 @@ Diziler, belirli bir türdeki verileri tutmak için kullanılan veri yapılarıd
 ```php
 <?php
 $numbers = array(1, 2, 3, 4, 5);
-echo "The third element of the array is: " . $numbers[2];
+echo "Dizinin üçüncü elemanı: " . $numbers[2];
 ?>
 ```
 Bu örnekte, $numbers dizisi "array()" fonksiyonu ile oluşturulmuştur. Dizi içindeki öğelere erişmek için, öğenin indis numarasını kullanarak diziye erişilir. Sonuç olarak, ekranda "The third element of the array is: 3" mesajı görüntülenecektir.
@@ -403,9 +403,9 @@ Bu örnekte, $numbers dizisi "array()" fonksiyonu ile oluşturulmuştur. Dizi i�
 ```php
 <?php
 $person = array(
-    "name" => "John",
-    "age" => 30,
-    "city" => "New York"
+    "name" => "Serkan",
+    "age" => 25,
+    "city" => "Kocaeli"
 );
 echo "Kişinin adı: " . $person["name"];
 ?>
@@ -682,7 +682,7 @@ class Student extends Person {
   }
 }
 
-$student = new Student("Jane Doe", 25, "12345");
+$student = new Student("Serkan", 25, "12345");
 echo $student->getDetails();
 
 ?>
