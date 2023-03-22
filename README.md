@@ -464,5 +464,5 @@ Bu örnekte, "array_push()" fonksiyonu, $fruits dizisine "banana" ve "pear" öğ
 ## Özet  
 Bugünkü makalede, PHP  dizileri  hakkında  temel  bilgileri öğrendik. Diziler, birden çok  değeri  saklamak  ve  işlemek  için  kullanışlı bir  veri  yapısıdır. Dizilerin  tanımlanması, elemanlarına  erişimi, elemanlarını değiştirme, döngülerle  işleme  ve  fonksiyonlarla  işleme  konularını ele  aldık. İlerideki  makalelerde, dizilerin  daha  gelişmiş konularını ele  alacağız.
 
-Gün 7: PHP Dosya İşlemleri
+# Gün 7: PHP Dosya İşlemleri
 
