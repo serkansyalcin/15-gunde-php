@@ -464,5 +464,55 @@ Bu örnekte, "array_push()" fonksiyonu, $fruits dizisine "banana" ve "pear" öğ
 ## Özet  
 Bugünkü makalede, PHP  dizileri  hakkında  temel  bilgileri öğrendik. Diziler, birden çok  değeri  saklamak  ve  işlemek  için  kullanışlı bir  veri  yapısıdır. Dizilerin  tanımlanması, elemanlarına  erişimi, elemanlarını değiştirme, döngülerle  işleme  ve  fonksiyonlarla  işleme  konularını ele  aldık. İlerideki  makalelerde, dizilerin  daha  gelişmiş konularını ele  alacağız.
 
-# Gün 7: PHP Dosya İşlemleri
+# Gün 7: Dosya İşlemleri
+PHP'de dosya işlemleri için kullanabileceğimiz bazı fonksiyonlar vardır. Bu fonksiyonlar dosya okuma, yazma, silme, taşıma vb. işlemleri gerçekleştirmemize yardımcı olur.
+
+### Dosya Oluşturma ve Yazma
+
+PHP'de dosya oluşturmak ve yazmak için `fopen()` ve `fwrite()` fonksiyonlarını kullanabiliriz. `fopen()` fonksiyonu belirtilen dosyayı açar ve dosya işaretçisini döndürür. Bu işaretçi, dosyadaki konumumuzu tutar. `fwrite()` fonksiyonu ise, belirtilen dosyaya yazmak için kullanılır.
+```php
+<?php
+$dosya = fopen("test.txt", "w");
+fwrite($dosya, "Merhaba Dünya!");
+fclose($dosya);
+?>
+```
+Yukarıdaki kod, "test.txt" adlı bir dosya oluşturacak ve içine "Merhaba Dünya!" yazacaktır.
+
+### Dosya Okuma
+
+PHP'de dosya okumak için `fread()` fonksiyonunu kullanabiliriz. Bu fonksiyon, belirtilen dosyadan belirli bir sayıda bayt okur.
+```php
+<?php
+$dosya = fopen("test.txt", "r");
+$icerik = fread($dosya, filesize("test.txt"));
+fclose($dosya);
+echo $icerik;
+?>
+```
+### Dosya Silme İşlemleri
+
+PHP'de dosya silme işlemi yapmak için unlink() fonksiyonu kullanılır.
+```php
+<?php
+if(unlink("dosya.txt")) {
+  echo "Dosya silindi.";
+} else {
+  echo "Dosya silinemedi.";
+}
+?>
+```
+### Dosya Taşıma İşlemleri
+
+PHP'de dosya taşıma işlemi yapmak için rename() fonksiyonu kullanılır.
+```php
+<?php
+if(rename("eski_dosya.txt", "yeni_dosya.txt")) {
+  echo "Dosya taşındı.";
+} else {
+  echo "Dosya taşınamadı.";
+}
+?>
+```
+Bu örnekler, PHP'de dosya işlemleri yapmanız için gerekli olan temel fonksiyonları göstermektedir. Bu fonksiyonları kullanarak, dosya işlemlerini kolayca yapabilirsiniz.
 
