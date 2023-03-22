@@ -616,3 +616,347 @@ if(mysqli_num_rows($result) > 0) {
 ?>
 ```
 Bu örnekler, PDO ve mysqli kullanarak PHP'de veritabanı işlemlerini yapmak için gerekli olan temel işlemleri göstermektedir. Bu sürücülerin sağladığı diğer işlevleri de kullanarak, veritabanı işlemlerini daha da geliştirebilirsiniz.
+
+# Gün 9: PHP Object-Oriented Programming (OOP)
+PHP'de Nesne Yönelimli Programlama (OOP), sınıflar ve nesneler kullanarak programlama yapmanızı sağlar. Sınıflar, bir nesnenin özelliklerini (ör. değişkenler) ve davranışlarını (ör. yöntemler) tanımlar. Nesneler, bir sınıftan türetilen örneklerdir. Bu, bir sınıfın özelliklerini ve davranışlarını kullanarak özelleştirilmiş nesneler oluşturmanıza olanak tanır. İşte birkaç örnek:
+
+### Bir Sınıf Tanımlama
+
+```php
+class Person {
+  public $name;
+  public $age;
+
+  function __construct($name, $age) {
+    $this->name = $name;
+    $this->age = $age;
+  }
+
+  function getDetails() {
+    return "Adı: " . $this->name . "<br>Yaşı: " . $this->age;
+  }
+}
+
+?>
+```
+Bu örnekte, "Person" adında bir sınıf tanımladık. Bu sınıf, "name" ve "age" adında iki özellik içerir ve "getDetails" adında bir yönteme sahiptir. Ayrıca, sınıfın kurucu yöntemi "__construct" tanımlanmıştır.
+
+### Bir Nesne Oluşturma
+```php
+<?php
+$person = new Person("John Doe", 30);
+?>
+```
+Bu örnekte, "Person" sınıfından bir nesne oluşturduk ve "John Doe" adında bir kişiyi ve 30 yaşını temsil etti.
+
+### Nesne Özelliklerine Erişim
+```php
+<?php
+echo $person->name;
+echo $person->age;
+?>
+```
+Bu örnekte, "Person" nesnesinin "name" ve "age" özelliklerine erişiyoruz.
+
+### Nesne Yöntemlerini Kullanma
+```php
+<?php
+echo $person->getDetails();
+?>
+```
+Bu örnekte, "Person" nesnesinin "getDetails" yöntemini kullanarak kişi ayrıntılarını getiriyoruz.
+
+### Kalıtım (Inheritance)
+```php
+<?php
+class Student extends Person {
+  public $studentID;
+
+  function __construct($name, $age, $studentID) {
+    parent::__construct($name, $age);
+    $this->studentID = $studentID;
+  }
+
+  function getDetails() {
+    return parent::getDetails() . "<br>Öğrenci Numarası: " . $this->studentID;
+  }
+}
+
+$student = new Student("Jane Doe", 25, "12345");
+echo $student->getDetails();
+
+?>
+```
+
+Bu örnekte, "Student" sınıfı, "Person" sınıfından kalıtım alır. Bu, "Student" sınıfının "name" ve "age" özelliklerini "Person" sınıfından almasını sağlar. Ayrıca, "studentID" adında başka bir özellik ve "getDetails" yönteminde bir değişiklik yaparak öğrenci numarasını da dahil eder.
+
+Bu örnekler, PHP'de nesne yönelimli programlama (OOP) konseptlerini gösterir. Bu örnekler, sınıflar ve nesneler oluşturma, özelliklere ve yöntemlere erişim, kurucu yöntemler, kalıtım ve yöntem geçersiz kılma gibi temel OOP konularını kapsamaktadır.
+
+### Soyut Sınıflar (Abstract Classes)
+```php
+<?php
+abstract class Animal {
+  public $name;
+
+  public function __construct($name) {
+    $this->name = $name;
+  }
+
+  abstract public function makeSound();
+}
+
+class Dog extends Animal {
+  public function makeSound() {
+    echo "Hav! Hav!";
+  }
+}
+
+$dog = new Dog("Fido");
+echo $dog->name . " says ";
+$dog->makeSound();
+
+?>
+```
+Bu örnekte, "Animal" adında bir soyut sınıf tanımladık. Bu sınıfın bir özelliği ("name") ve soyut bir yöntemi ("makeSound") var. "makeSound" yöntemi, alt sınıflar tarafından geçersiz kılınmak zorundadır.
+
+"Dog" adlı bir sınıf tanımladık ve "Animal" sınıfından kalıtım aldık. Bu sınıf, "makeSound" yöntemini geçersiz kılınarak köpeklerin havlaması için bir metin yazdırır.
+
+### Arabirimler (Interfaces)
+```php
+<?php
+interface Animal {
+  public function makeSound();
+}
+
+class Dog implements Animal {
+  public function makeSound() {
+    echo "Hav! Hav!";
+  }
+}
+
+$dog = new Dog();
+$dog->makeSound();
+
+?>
+```
+Bu örnekte, "Animal" adında bir arabirim tanımladık. Bu arabirim, "makeSound" adında bir yöntem içerir.
+
+"Dog" adlı bir sınıf tanımladık ve "Animal" arabirimini uygulayarak "makeSound" yöntemini geçersiz kılar.
+
+Bu örnekler, PHP'de nesne yönelimli programlama konularını gösterir. Bu konular, büyük ölçüde uygulama ve tasarım tercihlerine bağlı olarak farklı şekillerde kullanılabilir. OOP, özellikle büyük projelerde, daha iyi bir kod organizasyonu, daha kolay bakım ve daha fazla esneklik sağlayabilir.
+
+### Kapsülleme (Encapsulation)
+Kapsülleme, OOP'nin temel prensiplerinden biridir ve sınıfın içindeki verilerin ve işlevlerin korunmasına izin verir. Bu, sınıfın dışındaki kodun doğrudan sınıfın özelliklerine ve yöntemlerine erişememesi anlamına gelir.
+
+Kapsülleme, sınıfın özelliklerini özel olarak işaretleyerek ve yöntemlere get ve set yöntemleri ekleyerek sağlanabilir. Bu yöntemler, sınıfın dışındaki kodun özelliklere erişmesine izin verirken, veri doğruluğunu kontrol etmek ve sınıfın iç yapısını korumak için kullanılabilir.
+```php
+<?php
+class Person {
+  private $name;
+  private $age;
+
+  public function setName($name) {
+    $this->name = $name;
+  }
+
+  public function getName() {
+    return $this->name;
+  }
+
+  public function setAge($age) {
+    if ($age < 0) {
+      throw new Exception("Yaş pozitif bir sayı olmalıdır");
+    }
+    $this->age = $age;
+  }
+
+  public function getAge() {
+    return $this->age;
+  }
+}
+
+$person = new Person();
+$person->setName("Serkan");
+$person->setAge(30);
+
+echo $person->getName() . " ben" . $person->getAge() . " yaşındayım.";
+
+?>
+```
+Bu örnekte, "Person" adında bir sınıf tanımladık ve "name" ve "age" adında özel özellikler içerir.
+
+"name" ve "age" özelliklerine erişim, "setName", "getName", "setAge" ve "getAge" adında dört yöntem aracılığıyla yapılır. "setName" ve "setAge" yöntemleri, veri doğruluğunu kontrol etmek için kullanılır ve "getAge" ve "getName" yöntemleri, özelliklere erişim sağlar.
+
+## PHP Polimorfizm (Polymorphism) ve Arayüzler (Interfaces)
+
+PHP'de Polimorfizm ve Arayüzler, nesne yönelimli programlama konseptleri arasında yer almaktadır. Polimorfizm, aynı isimde farklı davranışlar sergileyen nesnelerin kullanılabilmesine olanak tanırken, Arayüzler, bir sınıfın belirli bir davranış kümesine sahip olduğunu belirtir.
+
+### Polimorfizm
+
+Polimorfizm, farklı nesnelerin aynı metodları kullanarak farklı davranışlar sergilemesini ifade eder. Bu, farklı sınıfların aynı yöntem isimlerini kullanarak farklı işlevler yerine getirmeleri anlamına gelir.
+
+```php
+interface Shape {
+   public function area();
+}
+
+class Square implements Shape {
+   private $side;
+
+   public function __construct($side) {
+      $this->side = $side;
+   }
+
+   public function area() {
+      return $this->side * $this->side;
+   }
+}
+
+class Circle implements Shape {
+   private $radius;
+
+   public function __construct($radius) {
+      $this->radius = $radius;
+   }
+
+   public function area() {
+      return $this->radius * $this->radius * pi();
+   }
+}
+
+$square = new Square(5);
+$circle = new Circle(3);
+
+echo "Kare Alan: " . $square->area() . "<br>";
+echo "Daire Alanı: " . $circle->area();
+
+?>
+```
+
+### İsim Uzayları (Namespaces)
+```php
+<?php
+namespace Animals;
+
+class Dog {
+  public function bark() {
+    echo "Hav! Hav!";
+  }
+}
+
+namespace Birds;
+
+class Parrot {
+  public function speak() {
+    echo "Polly kraker istiyor!";
+  }
+}
+
+?>
+```
+
+Bu örnekte, "Animals" ve "Birds" adında iki farklı isim uzayı tanımladık. Her isim uzayı, aynı sınıf adına sahip sınıflar içerebilir, ancak her isim uzayı, sınıflarının adını benzersiz bir şekilde belirtir.
+
+Bu örnekte "Dog" adlı bir sınıf, "Animals" isim uzayında ve "Parrot" adlı bir sınıf "Birds" isim uzayında tanımlanmıştır.
+
+### Magic Yöntemler (Magic Methods)
+```php
+<?php
+class Person {
+  private $name;
+
+  public function __construct($name) {
+    $this->name = $name;
+  }
+
+  public function __toString() {
+    return $this->name;
+  }
+}
+
+$person = new Person("John");
+echo $person; // "John" yazdırır
+
+?>
+```
+Bu örnekte, "Person" adında bir sınıf tanımladık ve "name" adında özel bir özellik tanımladık. Ayrıca, "__toString" adında bir "magic method" (sihirli yöntem) tanımladık. Bu yöntem, nesne dizesine dönüştürüldüğünde çağrılır ve burada sadece "name" özelliği döndürülür.
+### Oluşturucu Yöntemler (Constructor Methods)
+```php
+<?php
+class Person {
+  public $name;
+
+  public function __construct($name) {
+    $this->name = $name;
+  }
+
+  public function sayHello() {
+    echo "Selam, benim adım: " . $this->name . "!";
+  }
+}
+
+$person = new Person("Serkan");
+$person->sayHello();
+
+?>
+```
+Bu örnekte, "Person" adlı bir sınıf tanımladık ve "name" adında bir özelliği ("John" adlı bir kişinin adı) var.
+
+"Sözde yapıcı" yöntemi olan "__construct" yöntemini tanımladık. Bu yöntem, sınıfın bir nesnesi oluşturulduğunda otomatik olarak çağrılır ve özellikleri ayarlamak için kullanılabilir.
+
+"sayHello" adında bir yöntem tanımladık. Bu yöntem, "name" özelliğini kullanarak bir "Merhaba" mesajı oluşturur ve yazdırır.
+
+### Yöntem Geçersiz Kılma (Method Overriding)
+```php
+class Animal {
+  public function makeSound() {
+    echo "Unknown sound";
+  }
+}
+
+class Dog extends Animal {
+  public function makeSound() {
+    echo "Hav! Hav!";
+  }
+}
+
+$animal = new Animal();
+$animal->makeSound();
+
+$dog = new Dog();
+$dog->makeSound();
+
+?>
+```
+Bu örnekte, "Animal" adında bir sınıf tanımladık ve "makeSound" adında bir yöntemi var.
+
+"Dog" adlı bir sınıf tanımladık ve "Animal" sınıfından kalıtım aldık. "makeSound" yöntemini geçersiz kılarak köpeklerin havlaması için bir metin yazdırır.
+
+"Animal" sınıfından bir nesne ve "Dog" sınıfından bir nesne oluşturduk ve her biri kendi "makeSound" yöntemini çağırdı.
+
+### Final Anahtar Kelimesi (Final Keyword)
+`final` anahtar kelimesi, sınıf veya sınıf üyelerinin (metodlar ve özellikler) alt sınıflar tarafından değiştirilemez olduğunu belirtmek için kullanılır. Bu, sınıfın başka bir sınıf tarafından genişletilemeyeceği ve sınıf üyelerinin değiştirilemeyeceği anlamına gelir.
+
+### `final` Sınıflar
+
+`final` anahtar kelimesi, bir sınıfın başka bir sınıf tarafından genişletilemeyeceği anlamına gelir. Bu, `final` olarak belirlenmiş bir sınıfın alt sınıfları olamayacağı anlamına gelir. Aşağıdaki örnek, `final` anahtar kelimesi ile işaretlenmiş bir sınıfı göstermektedir:
+```php
+<?php
+final class FinalClass {
+    // sınıf kodları
+}
+?>
+```
+Bu sınıfı başka bir sınıf tarafından genişletmeye çalışırsanız, bir hata mesajı alırsınız:
+```php
+<?php
+class ChildClass extends FinalClass {
+    // hata mesajı: Cannot extend final class FinalClass
+}
+?>
+```
+### Özetle
+
+`Final` anahtar kelimesi, bir sınıfın veya öğenin değiştirilemez olduğunu belirtmek için kullanılır. Bu kısıtlama, bir sınıfın veya öğenin alt sınıflar tarafından değiştirilemeyeceği anlamına gelir. Bu, bir uygulamanın belirli bir sınıfın veya öğenin davranışını garanti altına almasına yardımcı olur.
+
+
