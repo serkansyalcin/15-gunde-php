@@ -92,8 +92,8 @@ Veri yapıları ve algoritmalar, herhangi bir programlama dilinde temel bir konu
 -   AJAX ve jQuery ile Veri Yükleme
 -   XML, JSON ve SOAP İşlemleri
 -   RESTful API ve Web Servisleri
--   Örnek Uygulama: Bir Öğrenci Yönetim Sistemi
-
+-   Composer
+-   
 # Gün 14: PHP Güvenliği
 
 -   Güvenli Kodlama Uygulamaları
@@ -1478,6 +1478,67 @@ SOAP, Simple Object Access Protocol'ün kısaltmasıdır ve web servisleri için
 RESTful API, Representational State Transfer anlamına gelir ve modern web uygulamaları için popüler bir web servisi arayüzüdür. RESTful API'ler, web uygulamaları arasında veri alışverişinin yapılmasına olanak sağlar. Bu API'ler, genellikle JSON veya XML formatında veri döndürürler ve birçok programlama dili tarafından desteklenirler.
 
 Web servisleri, farklı platformlar arasında veri paylaşımına olanak tanıyan bir teknolojidir. Web servisleri, önceden belirlenmiş bir protokol ve veri formatı kullanarak veri alışverişi yaparlar. Bu sayede, farklı programlama dillerinde yazılmış uygulamalar arasında veri alışverişi yapmak mümkün hale gelir. Web servisleri genellikle SOAP veya RESTful API gibi teknolojiler kullanılarak geliştirilir.
+
+## Composer
+
+Composer, PHP'de paket yönetimi için kullanılan bir araçtır. Projelerinizde kullandığınız kütüphanelerin, bağımlılıklarının, sürümlerinin yönetimi için kullanılır. Composer, projeleriniz için gerekli olan tüm paketleri, yükleme ve güncelleme işlemlerini otomatik olarak yapar.
+
+İşte bir örnek: Öncelikle, bir projede kullanacağınız paketleri tanımlamanız gerekiyor. Bu işlemi, projenizin kök dizinindeki "composer.json" dosyasında yapabilirsiniz. Aşağıdaki örnekte, "monolog/monolog" paketini kullanacağız.
+
+<code>
+{
+    "require": {
+        "monolog/monolog": "2.3.*"
+    }
+}
+</code>
+
+Daha sonra, projenizin kök dizininde aşağıdaki komutu çalıştırarak paketleri yükleyebilirsiniz:
+
+<code>
+composer install
+</code>
+
+Bu komut, "composer.json" dosyasında belirtilen tüm paketleri yükleyecektir. Eğer daha önce bir yükleme yapmışsanız ve yeni paketler eklediyseniz, "composer update" komutuyla da güncelleme yapabilirsiniz.
+
+Paketleri yükledikten sonra, projenizin kodunda bu paketleri kullanabilirsiniz. Aşağıdaki örnekte, "monolog" paketini kullanarak loglama yapacağız.
+
+```php
+<?php  
+require_once 'vendor/autoload.php';
+
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
+
+$log = new Logger('name');
+$log->pushHandler(new StreamHandler('path/to/your.log', Logger::WARNING));
+
+$log->warning('Foo');
+$log->error('Bar');
+
+?>
+```
+
+Bu kodda, "monolog" paketini "use" ifadesiyle çağırarak loglama işlemi yapmak için kullanıyoruz.
+
+Başka bir örnek: "guzzlehttp/guzzle" paketini kullanarak bir HTTP isteği gönderme işlemi yapabilirsiniz. Aşağıdaki örnekte, "guzzlehttp/guzzle" paketini kullanarak bir API'ye GET isteği gönderiyoruz.
+
+```php
+<?php 
+require_once 'vendor/autoload.php';
+
+use GuzzleHttp\Client;
+
+$client = new Client();
+
+$response = $client->request('GET', 'https://jsonplaceholder.typicode.com/posts/1');
+
+echo $response->getBody();
+
+?>
+```
+
+Bu kodda, "guzzlehttp/guzzle" paketini "use" ifadesiyle çağırarak HTTP isteği göndermek için kullanıyoruz. "getClient()" metodunu kullanarak bir HTTP istemcisi oluşturuyoruz ve "request()" metoduyla bir GET isteği gönderiyoruz. Son olarak, aldığımız yanıtın gövdesini ekrana yazdırıyoruz.
 
 # Gün 14: PHP Güvenliği
 PHP, web uygulamaları için oldukça popüler bir programlama dilidir. Ancak, PHP uygulamaları da potansiyel olarak saldırılara açık olabilirler. Bu nedenle, güvenli bir PHP kodu yazmak son derece önemlidir.
