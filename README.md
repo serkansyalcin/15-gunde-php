@@ -12,6 +12,7 @@
 -   PHP'nin Kurulumu
 -   PHP Sunucuları: Apache, Nginx vb.
 -   PHP Ayarları ve Yapılandırması
+-   Yerleşik HTTP Sunucusu
 -   İlk PHP Uygulamanızı Çalıştırın: "Merhaba Dünya"
 
 # Gün 3: PHP Temel Sözdizimi ve Değişkenler
@@ -124,6 +125,24 @@ PHP, web sunucularında çalıştırılabilen bir betik dilidir. Web sunucusu, P
 ## PHP Yorumlayıcıları
 
 PHP kodları, web sunucusunda veya yerel bir bilgisayarda PHP yorumlayıcısı tarafından yorumlanır. PHP yorumlayıcıları, PHP kodlarını çalıştırabilen uygulamalardır. En popüler PHP yorumlayıcıları arasında Apache, Nginx, IIS, XAMPP ve WAMP bulunur.
+
+## Yerleşik HTTP Sunucusu
+PHP ile birlikte gelen yerleşik HTTP sunucusu, PHP'nin yerel olarak çalıştırılmasına izin veren bir özelliktir. Bu, bir web sunucusu kurmanız gerekmeden, yerel bir bilgisayarda PHP dosyalarını çalıştırabilmenizi sağlar.
+
+Yerleşik HTTP sunucusunu çalıştırmak için, komut istemcisini açın ve PHP dosyasının bulunduğu dizine gidin. Ardından, aşağıdaki komutu girin:
+
+<code>php -S localhost:8000</code>
+
+Bu komut, yerleşik bir HTTP sunucusunu localhost:8000 adresinde başlatır. Artık, web tarayıcınızı açabilir ve "[http://localhost:8000](http://localhost:8000/)" adresini ziyaret ederek PHP dosyalarınızı görebilirsiniz.
+
+Örnek olarak, "index.php" adında bir PHP dosyası oluşturalım:
+
+```php
+<?php  echo  "Merhaba, Dünya!"; ?>
+```
+
+Daha sonra, komut istemcisinde dosyanın bulunduğu dizine gidin ve yerleşik HTTP sunucusunu başlatın. Ardından, web tarayıcınızda "[http://localhost:8000/index.php](http://localhost:8000/index.php)" adresini açın. "Merhaba dünya!" ifadesini içeren bir sayfa görüntülemelisiniz.
+
 
 ## İlk PHP Uygulaması
 
